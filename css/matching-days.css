@@ -1,0 +1,69 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  font-size: 100%;
+  font-family: monospace;
+  font-style: normal;
+  font: courier;
+}
+
+.container {
+  width: 90%;
+  height: 90%;
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weekdays{
+  /* float:left; */
+  margin: 20px;
+  width:100%;
+}
+
+.day {
+  border: 1px solid black;
+  width:10%;
+  padding: 1rem;
+}
+
+.green{
+  color: green;
+}
+
+.red{
+  background: red;
+}
+
+.blue{
+  background: blue;
+}
+
+
+/* @media (max-width: 500px) {
+
+  .handleBars{
+    width: 90%;
+    padding:20px;
+    float: left;
+  }
+
+  .static{
+    width: 90%;
+    padding:20px;
+    float: left;
+  }
+
+} */
