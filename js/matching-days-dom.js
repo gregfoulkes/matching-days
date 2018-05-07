@@ -1,3 +1,4 @@
+// DOM References
 var dayOne = document.querySelector('.date1')
 
 var dayTwo = document.querySelector('.date2')
@@ -5,29 +6,58 @@ var dayTwo = document.querySelector('.date2')
 var theDay = document.querySelector('.day')
 
 
-var x = MatchDays()
+var matchDaysFactory = MatchDays()
 
+// Template References
 
-dayOne.addEventListener('change', function(){
-  let days = document.querySelectorAll('.day')
+var matchingDaysTemplateSource = document.querySelector(".matchingDaysTemplate").innerHTML;
 
-  for (let i = 0; i < days.length; i++){
-    days[i].classList.remove('red')
-    if(days[i].innerHTML == x.dayInOne(dayOne.value)){
-      days[i].classList.add('red')
+var matchingDaysTemplate = Handlebars.compile(matchingDaysTemplateSource);
+
+var insertMatchingDaysDataElem = document.querySelector(".weekDays");
+
+//var storedRegTwo = localStorage.getItem('registrationsTwo') ? JSON.parse(localStorage.getItem('registrationsTwo')) : {};
+
+//Dom Code
+
+window.addEventListener('load', function() {
+
+  var weekDayMap = {}
+
+  var dayList = matchDaysFactory.list
+
+  for (let i = 0; i < dayList.length; i++) {
+    var dayListIndex = dayList[i]
+
+    weekDayMap[dayListIndex] = {
+      dayValue: dayListIndex,
+      dayName: dayListIndex
     }
+
+    insertMatchingDaysDataElem.innerHTML = matchingDaysTemplate({
+      weekDays: weekDayMap
+    })
+
   }
 });
 
-dayTwo.addEventListener('change', function(){
+dayOne.addEventListener('change', function() {
+  let days = document.querySelectorAll('.day')
+
+  var weekDayMap = matchDaysFactory.compare(matchDaysFactory.getDayOne(dayOne.value), matchDaysFactory.getDayTwo(dayTwo.value) )
+
+  insertMatchingDaysDataElem.innerHTML = matchingDaysTemplate({
+    weekDays: weekDayMap,
+  })
+});
+
+dayTwo.addEventListener('change', function() {
 
   let days = document.querySelectorAll('.day')
 
-  for (let i = 0; i < days.length; i++){
-    days[i].classList.remove('blue')
+  var weekDayMap = matchDaysFactory.compare(matchDaysFactory.getDayOne(dayOne.value), matchDaysFactory.getDayTwo(dayTwo.value) )
+  insertMatchingDaysDataElem.innerHTML = matchingDaysTemplate({
+    weekDays: weekDayMap,
+  })
 
-    if(days[i].innerHTML == x.dayInTwo(dayTwo.value)){
-      days[i].classList.add('blue')
-    }
-  }
 });

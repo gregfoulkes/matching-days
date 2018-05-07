@@ -9,26 +9,20 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 
-  <!-- <script type="text/x-template" class='dislpayRegTemplate'>
-
-    {{#each regList}}
-    <li class='{{regClass}}'>{{this}}</li>
+  <script type="text/x-template" class='matchingDaysTemplate'>
+    {{#each weekDays}}
+    <span class="day {{#if firstDate}}{{firstDate}}{{else if secondDate}} {{secondDate}} {{else if sameDay}} {{sameDay}}
+    {{/if}}"
+    value='{{@key}}'>{{dayName}}</span>
     {{/each}}
-  </script> -->
+  </script>
   <title>Matching Days</title>
 </head>
 
 <body>
   <div class="container">
 
-    <div class="weekdays center">
-      <span class='day' value='monday'>Monday</span>
-      <span class='day' value='tuesday'>Tuesday</span>
-      <span class='day' value='wednesday'>Wednesday</span>
-      <span class='day' value='thursday'>Thursday</span>
-      <span class='day' value='friday'>Friday</span>
-      <span class='day' value='saturday'>Saturday</span>
-      <span class='day' value='sunday'>Sunday</span>
+    <div class="weekDays">
 
     </div>
 

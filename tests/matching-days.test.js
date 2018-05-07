@@ -1,13 +1,27 @@
 describe('Filter registration numbers', function() {
-  it('Should return registrations from Cape Town only ', function() {
-    var callFunction = RegFunction();
+  it('Should return Thursday ', function() {
+    var callFunction = MatchDays();
 
-    callFunction.addRegistration('CA 1234')
-    callFunction.addRegistration('CA 4321')
-    callFunction.addRegistration('CAW 4321')
-    callFunction.addRegistration('CD 4321')
+    assert.equal(callFunction.getDayOne('05-03-2018'), 'Thursday')
 
-    assert.deepEqual(callFunction.filterReg('CA '), ['CA 1234', 'CA 4321'])
+  });
+
+  it('Should return Tuesday ', function() {
+    var callFunction = MatchDays();
+
+    assert.equal(callFunction.getDayTwo('06-05-2018'), 'Tuesday')
+
+  });
+});
+
+describe('compare dates function', function() {
+  it('Should return Thursday ', function() {
+    var callFunction = MatchDays();
+
+
+    assert.equal(callFunction.compare('Thursday', 'Friday'),
+      'Thursday'
+    );
 
   });
 });

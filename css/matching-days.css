@@ -27,7 +27,7 @@ body {
   margin-right: auto;
 }
 
-.weekdays{
+.weekDays{
   /* float:left; */
   margin: 20px;
   width:100%;
@@ -40,7 +40,7 @@ body {
 }
 
 .green{
-  color: green;
+  background: green;
 }
 
 .red{
