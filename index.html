@@ -11,7 +11,7 @@
 
   <script type="text/x-template" class='matchingDaysTemplate'>
     {{#each weekDays}}
-    <span class="day {{#if firstDate}}{{firstDate}}{{else if secondDate}} {{secondDate}} {{else if sameDay}} {{sameDay}}
+    <span class="day center {{#if firstDate}}{{firstDate}}{{else if secondDate}} {{secondDate}} {{else if sameDay}} {{sameDay}}
     {{/if}}"
     value='{{@key}}'>{{dayName}}</span>
     {{/each}}
@@ -22,14 +22,14 @@
 <body>
   <div class="container">
 
-    <div class="weekDays">
+    <div class="weekDays center">
 
     </div>
 
     <div class="dateInput center">
 
-      <input class='date1' type="date" name="" value="">
-      <input class='date2' type="date" name="" value="">
+      <input class='date1 center' type="date" name="" value="">
+      <input class='date2 center' type="date" name="" value="">
 
     </div>
 

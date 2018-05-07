@@ -12,6 +12,7 @@ body {
   font: courier;
 }
 
+
 .container {
   width: 90%;
   height: 90%;
@@ -52,7 +53,15 @@ body {
 }
 
 
-/* @media (max-width: 500px) {
+@media (max-width: 700px) {
+
+  .day {
+    width:40%;
+
+    content: "";
+    display: block;
+    clear: both;
+  }
 
   .handleBars{
     width: 90%;
@@ -66,4 +75,4 @@ body {
     float: left;
   }
 
-} */
+}
