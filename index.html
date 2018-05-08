@@ -11,7 +11,7 @@
 
   <script type="text/x-template" class='matchingDaysTemplate'>
     {{#each weekDays}}
-    <span class="day center {{#if firstDate}}{{firstDate}}{{else if secondDate}} {{secondDate}} {{else if sameDay}} {{sameDay}}{{/if}}"
+    <span class="day center {{firstDate}}{{secondDate}} {{sameDay}}"
     value='{{@key}}'>{{dayName}}</span>
     {{/each}}
   </script>

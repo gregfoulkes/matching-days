@@ -16,48 +16,28 @@ var matchingDaysTemplate = Handlebars.compile(matchingDaysTemplateSource);
 
 var insertMatchingDaysDataElem = document.querySelector(".weekDays");
 
-//var storedRegTwo = localStorage.getItem('registrationsTwo') ? JSON.parse(localStorage.getItem('registrationsTwo')) : {};
-
 //Dom Code
 
 window.addEventListener('load', function() {
 
-  var weekDayMap = {}
+  insertMatchingDaysDataElem.innerHTML = matchingDaysTemplate({
+    weekDays: matchDaysFactory.compare(matchDaysFactory.getDayOne(dayOne.value), matchDaysFactory.getDayTwo(dayTwo.value))
+  })
 
-  var dayList = matchDaysFactory.list
 
-  for (let i = 0; i < dayList.length; i++) {
-    var dayListIndex = dayList[i]
-
-    weekDayMap[dayListIndex] = {
-      dayValue: dayListIndex,
-      dayName: dayListIndex
-    }
-
-    insertMatchingDaysDataElem.innerHTML = matchingDaysTemplate({
-      weekDays: weekDayMap
-    })
-
-  }
 });
 
 dayOne.addEventListener('change', function() {
-  let days = document.querySelectorAll('.day')
-
-  var weekDayMap = matchDaysFactory.compare(matchDaysFactory.getDayOne(dayOne.value), matchDaysFactory.getDayTwo(dayTwo.value) )
 
   insertMatchingDaysDataElem.innerHTML = matchingDaysTemplate({
-    weekDays: weekDayMap,
+    weekDays: matchDaysFactory.compare(matchDaysFactory.getDayOne(dayOne.value), matchDaysFactory.getDayTwo(dayTwo.value))
   })
 });
 
 dayTwo.addEventListener('change', function() {
 
-  let days = document.querySelectorAll('.day')
-
-  var weekDayMap = matchDaysFactory.compare(matchDaysFactory.getDayOne(dayOne.value), matchDaysFactory.getDayTwo(dayTwo.value) )
   insertMatchingDaysDataElem.innerHTML = matchingDaysTemplate({
-    weekDays: weekDayMap,
+    weekDays: matchDaysFactory.compare(matchDaysFactory.getDayOne(dayOne.value), matchDaysFactory.getDayTwo(dayTwo.value))
   })
 
 });

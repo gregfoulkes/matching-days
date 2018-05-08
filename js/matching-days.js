@@ -67,6 +67,7 @@ function MatchDays() {
       }
 
     }
+    console.log(weekDayMap)
     return weekDayMap;
   }
 
@@ -74,7 +75,7 @@ function MatchDays() {
     getDayOne: getDay1,
     getDayTwo: getDay2,
     compare: compareDays,
-    same:sameDay,
+    same: sameDay,
     list: weekDays
   };
 

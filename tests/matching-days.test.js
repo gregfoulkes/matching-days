@@ -19,7 +19,7 @@ describe('Same dates function', function() {
     var callFunction = MatchDays();
 
 
-    assert.equal(callFunction.same('Thursday', 'Friday'),false);
+    assert.equal(callFunction.same('Thursday', 'Friday'), false);
 
   });
 
@@ -27,37 +27,197 @@ describe('Same dates function', function() {
     var callFunction = MatchDays();
 
 
-    assert.equal(callFunction.same('Thursday', 'Thursday'),true);
+    assert.equal(callFunction.same('Thursday', 'Thursday'), true);
 
   });
 
-  it('Should return true if days are the same ', function() {
+});
+
+describe('compare dates function', function() {
+
+  it('Should add class {{sameDay}} to corresponding day name of key in object if days are the same ', function() {
     var matchDays = MatchDays();
 
-    matchDays.getDay1('08/05/2018');
-    matchDays.getDay2('22/05/2018');
 
-    var formattedWeekDays = matchDays.compare();
+    var one = matchDays.getDayOne('05/08/2018');
+    var two = matchDays.getDayTwo('05/22/2018');
 
-    /*
-    [{
-      day : "",
-      style : ""
-    }, {
-      day : "",
-      style : ""
-    }, {
-      day : "",
-      style : ""
-    }]
-    */
-    
-    var wednesday = formattedWeekDays[2];
-    wednesday.day === "Wednesday";
-    wednesday.style  === "green";
+    assert.deepEqual(matchDays.compare(one, two), {
+
+      Sunday: {
+        dayValue: "Sunday",
+        dayName: "Sunday"
+      },
+      Monday: {
+        dayValue: "Monday",
+        dayName: "Monday"
+      },
+      Tuesday: {
+        sameDay: "green",
+        dayValue: "Tuesday",
+        dayName: "Tuesday"
+      },
+      Wednesday: {
+        dayValue: "Wednesday",
+        dayName: "Wednesday"
+      },
+      Thursday: {
+        dayValue: "Thursday",
+        dayName: "Thursday"
+      },
+      Friday: {
+        dayValue: "Friday",
+        dayName: "Friday"
+      },
+      Saturday: {
+        dayValue: "Saturday",
+        dayName: "Saturday"
+      }
 
 
-    //assert.equal(matchDays.same('Thursday', 'Thursday'),true);
+    });
+  });
+
+  it('Should add class {{firstDate}} to corresponding day name of key in object if days are the same ("Wednesday") ', function() {
+    var matchDays = MatchDays();
+
+
+    var one = matchDays.getDayOne('05/09/2018');
+    var two = matchDays.getDayTwo(undefined);
+
+
+    //var formattedWeekDays = matchDays.compare(one, two);
+
+
+    assert.deepEqual(matchDays.compare(one, two), {
+
+      Sunday: {
+        dayValue: "Sunday",
+        dayName: "Sunday"
+      },
+      Monday: {
+        dayValue: "Monday",
+        dayName: "Monday"
+      },
+      Tuesday: {
+        dayValue: "Tuesday",
+        dayName: "Tuesday"
+      },
+      Wednesday: {
+        firstDate: "red",
+        dayValue: "Wednesday",
+        dayName: "Wednesday"
+      },
+      Thursday: {
+        dayValue: "Thursday",
+        dayName: "Thursday"
+      },
+      Friday: {
+        dayValue: "Friday",
+        dayName: "Friday"
+      },
+      Saturday: {
+        dayValue: "Saturday",
+        dayName: "Saturday"
+      }
+
+    });
+
+  });
+
+  it('Should add class {{secondDate}} to corresponding day name of key in the object ("Thursday") ', function() {
+    var matchDays = MatchDays();
+
+
+    var one = matchDays.getDayOne(undefined);
+    var two = matchDays.getDayTwo('05/010/2018');
+
+
+    //var formattedWeekDays = matchDays.compare(one, two);
+
+
+    assert.deepEqual(matchDays.compare(one, two), {
+
+      Sunday: {
+        dayValue: "Sunday",
+        dayName: "Sunday"
+      },
+      Monday: {
+        dayValue: "Monday",
+        dayName: "Monday"
+      },
+      Tuesday: {
+        dayValue: "Tuesday",
+        dayName: "Tuesday"
+      },
+      Wednesday: {
+
+        dayValue: "Wednesday",
+        dayName: "Wednesday"
+      },
+      Thursday: {
+        secondDate: "blue",
+        dayValue: "Thursday",
+        dayName: "Thursday"
+      },
+      Friday: {
+        dayValue: "Friday",
+        dayName: "Friday"
+      },
+      Saturday: {
+        dayValue: "Saturday",
+        dayName: "Saturday"
+      }
+
+    });
+
+  });
+
+  it('Should add classes {{firstDate}} and {{secondDate}} to corresponding day name of keys in the object ("Wednesday, "Thursday") ', function() {
+    var matchDays = MatchDays();
+
+
+    var one = matchDays.getDayOne('05/09/2018');
+    var two = matchDays.getDayTwo('05/10/2018');
+
+
+    //var formattedWeekDays = matchDays.compare(one, two);
+
+
+    assert.deepEqual(matchDays.compare(one, two), {
+
+      Sunday: {
+        dayValue: "Sunday",
+        dayName: "Sunday"
+      },
+      Monday: {
+        dayValue: "Monday",
+        dayName: "Monday"
+      },
+      Tuesday: {
+        dayValue: "Tuesday",
+        dayName: "Tuesday"
+      },
+      Wednesday: {
+        firstDate: "red",
+        dayValue: "Wednesday",
+        dayName: "Wednesday"
+      },
+      Thursday: {
+        secondDate: "blue",
+        dayValue: "Thursday",
+        dayName: "Thursday"
+      },
+      Friday: {
+        dayValue: "Friday",
+        dayName: "Friday"
+      },
+      Saturday: {
+        dayValue: "Saturday",
+        dayName: "Saturday"
+      }
+
+    });
 
   });
 });
