@@ -23,7 +23,7 @@ function MatchDays() {
     }
   }
 
-  function compareDays(firstDate, secondDate) {
+  function compareDays() {
     var weekDayMap = {};
 
     for (var i = 0; i < weekDays.length; i++) {
@@ -74,6 +74,7 @@ function MatchDays() {
     getDayOne: getDay1,
     getDayTwo: getDay2,
     compare: compareDays,
+    same:sameDay,
     list: weekDays
   };
 
